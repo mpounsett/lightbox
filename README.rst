@@ -27,7 +27,22 @@ Installation
 
 Make sure to rename the ``lightbox-master`` directory to ``lightbox``.
 
-Then enable it in your ``pelicanconf.py`` file.
+If you do not have a plugins directory in your Pelican blog, in the root
+directory of your blog, the directory your ``content`` directory is in.
+
+Create one.
+
+.. code-block:: bash
+
+    $ mkdir plugins
+
+And in your ``pelicanconf.py`` set the ``PLUGIN_PATHS`` variable.
+
+.. code-block:: python
+
+    PLUGIN_PATHS = ['plugins/', ]
+
+Then add lightbox to your ``pelicanconf.py`` ``PLUGINS``.
 
 .. code-block:: python
 
