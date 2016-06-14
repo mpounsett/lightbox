@@ -33,7 +33,7 @@ def align(argument):
 
 class Lightbox(Directive):
     """
-    Create a pure CSS lightbox for an image.
+    Create a pure CSS lightbox for images.
 
     Usage:
 
