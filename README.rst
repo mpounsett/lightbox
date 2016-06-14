@@ -1,6 +1,12 @@
 Lightbox -- A pure CSS lightbox for Pelican
 ###########################################
 
+.. figure:: https://raw.githubusercontent.com/kura/lightbox/master/lightbox.png
+    :alt: Lightbox
+    :align: center
+
+    Credit: `Kimberly Coles <http://www.kimberlycoles.com/>`_
+
 .. contents::
     :backlinks: none
 
