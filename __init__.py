@@ -28,7 +28,7 @@ from docutils.parsers.rst import directives, Directive
 
 def align(argument):
     """Conversion function for the "align" option."""
-    return directives.choice(argument, ('left', 'center', 'right'))
+    return directives.choice(argument, ("left", "center", "right"))
 
 
 class Lightbox(Directive):
@@ -48,11 +48,11 @@ class Lightbox(Directive):
     required_arguments = 0
     optional_arguments = 3
     option_spec = {
-        'thumb': str,
-        'large': str,
-        'alt': str,
-        'caption': str,
-        'align': align
+        "thumb": str,
+        "large": str,
+        "alt": str,
+        "caption": str,
+        "align": align,
     }
 
     final_argument_whitespace = False
@@ -60,52 +60,47 @@ class Lightbox(Directive):
 
     def run(self):
         """Run the directive."""
-        if 'thumb' not in self.options:
-            raise self.error('Thumb argument is required.')
-        thumb = self.options['thumb']
-        if 'large' not in self.options:
-            raise self.error('Large argument is required.')
-        large = self.options['large']
+        if "thumb" not in self.options:
+            raise self.error("Thumb argument is required.")
+        thumb = self.options["thumb"]
+        if "large" not in self.options:
+            raise self.error("Large argument is required.")
+        large = self.options["large"]
 
         uuid = str(uuid4())
-        caption = None
-        alt = None
 
-        if 'alt' in self.options:
-            alt = self.options['alt']
-
-        if 'caption' in self.options:
-            caption = self.options['caption']
-
-        if 'align' in self.options:
-            align = self.options['align']
-        else:
-            align = 'left'
+        alt = self.options.get("alt", None)
+        align = self.options.get("align", "left")
 
         if alt is not None:
-            alt_text = '{} (click to view large image)'.format(alt)
+            alt_text = "{} (click to view large image)".format(alt)
         else:
-            alt_text = '(click to view large image)'
+            alt_text = "Click to view large image"
 
+        caption = self.options.get("caption", None)
         if caption is not None:
-            caption_block = ('''<p class="align-{}">{} (click to view large '''
-                             '''image)</p>''').format(align, caption)
+            caption_block = (
+                """<p class="align-{}">{} (click to view large """
+                """image)</p>"""
+            ).format(align, caption)
         else:
-            caption_block = ('''<p class="align-{}">(click to view large '''
-                             '''image)</p>''').format(align)
+            caption_block = (
+                """<p class="align-{}">Click to view large image</p>"""
+            ).format(align)
 
-        block = ('''<div class="lightbox-block align-{4}">'''
-                 '''<a href="#{0}" title="{3}">'''
-                 '''<img src="{1}" alt="{3}" class="align-{4}" /></a>'''
-                 '''<a href="#_" class="lightbox" id="{0}" title="Click to '''
-                 '''close">'''
-                 '''<img alt="Click to close" src="{2}" /></a>{5}</div>'''
-                 '''<div class="lightbox-divider">'''
-                 '''</div>''').format(uuid, thumb, large, alt_text, align,
-                                      caption_block)
-        return [nodes.raw('', block, format='html'), ]
+        block = (
+            """<div class="lightbox-block align-{4}">"""
+            """<a href="#{0}" title="{3}">"""
+            """<img src="{1}" alt="{3}" class="align-{4}" /></a>"""
+            """<a href="#_" class="lightbox" id="{0}" title="Click to """
+            """close">"""
+            """<img alt="Click to close" src="{2}" /></a>{5}</div>"""
+            """<div class="lightbox-divider">"""
+            """</div>"""
+        ).format(uuid, thumb, large, alt_text, align, caption_block)
+        return [nodes.raw("", block, format="html")]
 
 
 def register():
     """Register the directive."""
-    directives.register_directive('lightbox', Lightbox)
+    directives.register_directive("lightbox", Lightbox)
