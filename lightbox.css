@@ -12,6 +12,10 @@
    background: rgba(0,0,0,0.8);
 }
 
+.lightbox-caption {
+   margin: 0em;
+}
+
 .lightbox img {
    max-width: 98%;
    max-height: 90%;
