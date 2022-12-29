@@ -66,7 +66,7 @@ In your article or page, you simply need add a directive.
 .. code-block:: rst
 
     .. lightbox::
-        :thumbnail: /images/eevee-thumbnail.png
+        :thumb: /images/eevee-thumbnail.png
         :large: /images/eevee-large.png
 
 Will result in the following HTML.
@@ -75,10 +75,10 @@ Will result in the following HTML.
 
     <div class="align-left">
         <a href="#005da263-b70e-4a84-b8c3-e2c989527613" title="Click to view large image">
-            <img src="/images/eevee-article-header-thumb.png" class="align-left" alt="Click to view large image" />
+            <img src="/images/eevee-thumbnail.png" class="align-left" alt="Click to view large image" />
         </a>
         <a class="lightbox" href="#_" id="005da263-b70e-4a84-b8c3-e2c989527613" title="Click to close">
-            <img src="/images/eevee-article-header.png" alt="Click to close" />
+            <img src="/images/eevee-large.png" alt="Click to close" />
         </a>
     </div>
     <div class="lightbox-divider"></div>
